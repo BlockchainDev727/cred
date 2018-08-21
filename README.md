@@ -9,22 +9,19 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 - Forum: [forum.getcred.org](https://forum.getcred.org)
 - Mail: [dev@getcred.org](mailto:dev@getcred.org)
 - GitHub: [https://github.com/cred-project/cred](https://github.com/cred-project/cred)
-- IRC: [#cred-dev on Freenode](https://webchat.freenode.net/?randomnick=1&channels=%23cred-dev&prompt=1&uio=d4)
+- IRC: [#cred-dev on Freenode](http://webchat.freenode.net/?randomnick=1&channels=%23cred-dev&prompt=1&uio=d4)
 
 ## Vulnerability response
 
 - Our [Vulnerability Response Process](https://github.com/cred-project/meta/blob/master/VULNERABILITY_RESPONSE_PROCESS.md) encourages responsible disclosure
 - We are also available via [HackerOne](https://hackerone.com/cred)
 
+
 ## Announcements
 
-- You can subscribe to an [announcement listserv](https://lists.getcred.org) to get critical announcements from the Cred core team. The announcement list can be very helpful for knowing when software updates are needed.
+You can subscribe to an [announcement listserv](https://lists.getcred.org) to get critical announcements from the Cred core team. The announcement list can be very helpful for knowing when software updates are needed.
 
 ## Build
-
-### IMPORTANT 
-
-These builds are of the master branch, which is used for active development and can be either unstable or incompatible with release software. Please compile release branches.
 
 | Operating System      | Processor | Status |
 | --------------------- | -------- |--------|
@@ -77,12 +74,12 @@ The Bitcoin donation address is: `1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H`
 Core development funding and/or some supporting services are also graciously provided by sponsors:
 
 [<img width="80" src="https://static.getcred.org/images/sponsors/mycred.png"/>](https://mycred.com)
-[<img width="150" src="https://static.getcred.org/images/sponsors/kitware.png?1"/>](https://kitware.com)
-[<img width="100" src="https://static.getcred.org/images/sponsors/dome9.png"/>](https://dome9.com)
-[<img width="150" src="https://static.getcred.org/images/sponsors/araxis.png"/>](https://araxis.com)
-[<img width="150" src="https://static.getcred.org/images/sponsors/jetbrains.png"/>](https://www.jetbrains.com/)
-[<img width="150" src="https://static.getcred.org/images/sponsors/navicat.png"/>](https://www.navicat.com/)
-[<img width="150" src="https://static.getcred.org/images/sponsors/symas.png"/>](https://www.symas.com/)
+[<img width="150" src="https://static.getcred.org/images/sponsors/kitware.png?1"/>](http://kitware.com)
+[<img width="100" src="https://static.getcred.org/images/sponsors/dome9.png"/>](http://dome9.com)
+[<img width="150" src="https://static.getcred.org/images/sponsors/araxis.png"/>](http://araxis.com)
+[<img width="150" src="https://static.getcred.org/images/sponsors/jetbrains.png"/>](http://www.jetbrains.com/)
+[<img width="150" src="https://static.getcred.org/images/sponsors/navicat.png"/>](http://www.navicat.com/)
+[<img width="150" src="https://static.getcred.org/images/sponsors/symas.png"/>](http://www.symas.com/)
 
 There are also several mining pools that kindly donate a portion of their fees, [a list of them can be found on our Bitcointalk post](https://bitcointalk.org/index.php?topic=583449.0).
 
@@ -139,6 +136,7 @@ library archives (`.a`).
 | libzmq       | 3.0.0         | NO       | `libzmq3-dev`      | `zeromq`     | `cppzmq-devel`    | NO       | ZeroMQ library |
 | libunbound   | 1.4.16        | YES      | `libunbound-dev`   | `unbound`    | `unbound-devel`   | NO       | DNS resolver   |
 | libsodium    | ?             | NO       | `libsodium-dev`    | ?            | `libsodium-devel` | NO       | libsodium      |
+| libminiupnpc | 2.0           | YES      | `libminiupnpc-dev` | `miniupnpc`  | `miniupnpc-devel` | YES      | NAT punching   |
 | libunwind    | any           | NO       | `libunwind8-dev`   | `libunwind`  | `libunwind-devel` | YES      | Stack traces   |
 | liblzma      | any           | NO       | `liblzma-dev`      | `xz`         | `xz-devel`        | YES      | For libunwind  |
 | libreadline  | 6.3.0         | NO       | `libreadline6-dev` | `readline`   | `readline-devel`  | YES      | Input editing  |
@@ -152,9 +150,6 @@ library archives (`.a`).
 
 [^] On Debian/Ubuntu `libgtest-dev` only includes sources and headers. You must
 build the library binary manually. This can be done with the following command ```sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv libg* /usr/lib/ ```
-
-Debian / Ubuntu one liner for all dependencies  
-``` sudo apt update && sudo apt install build-essential cmake pkg-config libboost-all-dev libssl-dev libzmq3-dev libunbound-dev libsodium-dev libunwind8-dev liblzma-dev libreadline6-dev libldns-dev libexpat1-dev doxygen graphviz libpcsclite-dev ```
 
 ### Cloning the repository
 
@@ -174,10 +169,9 @@ invokes cmake commands as needed.
 #### On Linux and OS X
 
 * Install the dependencies
-* Change to the root of the source code directory, change to the most recent release branch, and build:
+* Change to the root of the source code directory and build:
 
         cd cred
-        git checkout v0.12.2.0
         make
 
     *Optional*: If your machine has several cores and enough memory, enable
@@ -187,12 +181,6 @@ invokes cmake commands as needed.
 
     *Note*: If cmake can not find zmq.hpp file on OS X, installing `zmq.hpp` from
     https://github.com/zeromq/cppzmq to `/usr/local/include` should fix that error.
-    
-    *Note*: The instructions above will compile the most stable release of the
-    Cred software. If you would like to use and test the most recent software,
-    use ```git checkout master```. The master branch may contain updates that are
-    both unstable and incompatible with release software, though testing is always 
-    encouraged. 
 
 * The resulting executables can be found in `build/release/bin`
 
@@ -239,7 +227,7 @@ Tested on a Raspberry Pi Zero with a clean install of minimal Raspbian Stretch (
 ```
         git clone https://github.com/cred-project/cred.git
 	cd cred
-	git checkout tags/v0.12.2.0
+	git checkout tags/v0.11.1.0
 ```
 * Build:
 ```
@@ -290,14 +278,14 @@ If you are using the older Raspbian Jessie image, compiling Cred is a bit more c
 #### On Windows:
 
 Binaries for Windows are built on Windows using the MinGW toolchain within
-[MSYS2 environment](https://www.msys2.org). The MSYS2 environment emulates a
+[MSYS2 environment](http://msys2.github.io). The MSYS2 environment emulates a
 POSIX system. The toolchain runs within the environment and *cross-compiles*
 binaries that can run outside of the environment as a regular Windows
 application.
 
 **Preparing the build environment**
 
-* Download and install the [MSYS2 installer](https://www.msys2.org), either the 64-bit or the 32-bit package, depending on your system.
+* Download and install the [MSYS2 installer](http://msys2.github.io), either the 64-bit or the 32-bit package, depending on your system.
 * Open the MSYS shell via the `MSYS2 Shell` shortcut
 * Update packages using pacman:  
 
@@ -324,21 +312,7 @@ application.
   or `MinGW-w64-Win64 Shell` shortcut on 32-bit Windows. Note that if you are
   running 64-bit Windows, you will have both 64-bit and 32-bit MinGW shells.
 
-**Cloning**
-
-* To git clone, run:
-
-        git clone --recursive https://github.com/cred-project/cred.git
-
 **Building**
-
-* Change to the cloned directory, run:
-	
-        cd cred
-
-* If you would like a specific [version/tag](https://github.com/cred-project/cred/tags), do a git checkout for that version. eg. 'v0.12.1.0'. If you dont care about the version and just want binaries from master, skip this step:
-	
-        git checkout v0.12.1.0
 
 * If you are on a 64-bit system, run:
 
@@ -349,16 +323,6 @@ application.
         make release-static-win32
 
 * The resulting executables can be found in `build/release/bin`
-
-* **Optional**: to build Windows binaries suitable for debugging on a 64-bit system, run:
-
-        make debug-static-win64
-	
-* **Optional**: to build Windows binaries suitable for debugging on a 32-bit system, run:
-
-        make debug-static-win32
-
-* The resulting executables can be found in `build/debug/bin`
 
 ### On FreeBSD:
 
@@ -372,7 +336,7 @@ We expect to add Cred into the ports tree in the near future, which will aid in 
 
 This has been tested on OpenBSD 5.8.
 
-You will need to add a few packages to your system. `pkg_add db cmake gcc gcc-libs g++ gtest`.
+You will need to add a few packages to your system. `pkg_add db cmake gcc gcc-libs g++ miniupnpc gtest`.
 
 The doxygen and graphviz packages are optional and require the xbase set.
 
@@ -385,7 +349,7 @@ To build: `env CC=egcc CXX=eg++ CPP=ecpp DEVELOPER_LOCAL_TOOLS=1 BOOST_ROOT=/pat
 
 #### OpenBSD >= 6.2
 
-You will need to add a few packages to your system. `pkg_add cmake zeromq libiconv`.
+You will need to add a few packages to your system. `pkg_add cmake miniupnpc zeromq libiconv`.
 
 The doxygen and graphviz packages are optional and require the xbase set.
 

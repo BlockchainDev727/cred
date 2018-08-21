@@ -164,7 +164,7 @@ namespace
     while (true)
     {
       if (message)
-        std::cout << message <<": " << std::flush;
+        std::cout << message <<": ";
       if (!read_from_tty(pass1))
         return false;
       if (verify)

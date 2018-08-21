@@ -50,16 +50,16 @@ namespace epee {
 namespace Cred {
 
 Wallet *WalletManagerImpl::createWallet(const std::string &path, const std::string &password,
-                                    const std::string &language, NetworkType nettype, uint64_t kdf_rounds)
+                                    const std::string &language, NetworkType nettype)
 {
-    WalletImpl * wallet = new WalletImpl(nettype, kdf_rounds);
+    WalletImpl * wallet = new WalletImpl(nettype);
     wallet->create(path, password, language);
     return wallet;
 }
 
-Wallet *WalletManagerImpl::openWallet(const std::string &path, const std::string &password, NetworkType nettype, uint64_t kdf_rounds)
+Wallet *WalletManagerImpl::openWallet(const std::string &path, const std::string &password, NetworkType nettype)
 {
-    WalletImpl * wallet = new WalletImpl(nettype, kdf_rounds);
+    WalletImpl * wallet = new WalletImpl(nettype);
     wallet->open(path, password);
     //Refresh addressBook
     wallet->addressBook()->refresh(); 
@@ -87,10 +87,9 @@ Wallet *WalletManagerImpl::recoveryWallet(const std::string &path,
                                                 const std::string &password,
                                                 const std::string &mnemonic,
                                                 NetworkType nettype,
-                                                uint64_t restoreHeight,
-                                                uint64_t kdf_rounds)
+                                                uint64_t restoreHeight)
 {
-    WalletImpl * wallet = new WalletImpl(nettype, kdf_rounds);
+    WalletImpl * wallet = new WalletImpl(nettype);
     if(restoreHeight > 0){
         wallet->setRefreshFromBlockHeight(restoreHeight);
     }
@@ -105,10 +104,9 @@ Wallet *WalletManagerImpl::createWalletFromKeys(const std::string &path,
                                                 uint64_t restoreHeight,
                                                 const std::string &addressString,
                                                 const std::string &viewKeyString,
-                                                const std::string &spendKeyString,
-                                                uint64_t kdf_rounds)
+                                                const std::string &spendKeyString)
 {
-    WalletImpl * wallet = new WalletImpl(nettype, kdf_rounds);
+    WalletImpl * wallet = new WalletImpl(nettype);
     if(restoreHeight > 0){
         wallet->setRefreshFromBlockHeight(restoreHeight);
     }
@@ -121,10 +119,9 @@ Wallet *WalletManagerImpl::createWalletFromDevice(const std::string &path,
                                                   NetworkType nettype,
                                                   const std::string &deviceName,
                                                   uint64_t restoreHeight,
-                                                  const std::string &subaddressLookahead,
-                                                  uint64_t kdf_rounds)
+                                                  const std::string &subaddressLookahead)
 {
-    WalletImpl * wallet = new WalletImpl(nettype, kdf_rounds);
+    WalletImpl * wallet = new WalletImpl(nettype);
     if(restoreHeight > 0){
         wallet->setRefreshFromBlockHeight(restoreHeight);
     }
@@ -162,9 +159,9 @@ bool WalletManagerImpl::walletExists(const std::string &path)
     return false;
 }
 
-bool WalletManagerImpl::verifyWalletPassword(const std::string &keys_file_name, const std::string &password, bool no_spend_key, uint64_t kdf_rounds) const
+bool WalletManagerImpl::verifyWalletPassword(const std::string &keys_file_name, const std::string &password, bool no_spend_key) const
 {
-	    return tools::wallet2::verify_password(keys_file_name, password, no_spend_key, hw::get_device("default"), kdf_rounds);
+	    return tools::wallet2::verify_password(keys_file_name, password, no_spend_key, hw::get_device("default"));
 }
 
 std::vector<std::string> WalletManagerImpl::findWallets(const std::string &path)

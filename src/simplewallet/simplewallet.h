@@ -91,13 +91,13 @@ namespace cryptonote
     //! \return Prompts user for password and verifies against local file. Logs on error and returns `none`
     boost::optional<tools::password_container> get_and_verify_password() const;
 
-    boost::optional<epee::wipeable_string> new_wallet(const boost::program_options::variables_map& vm, const crypto::secret_key& recovery_key,
+    bool new_wallet(const boost::program_options::variables_map& vm, const crypto::secret_key& recovery_key,
         bool recover, bool two_random, const std::string &old_language);
-    boost::optional<epee::wipeable_string> new_wallet(const boost::program_options::variables_map& vm, const cryptonote::account_public_address& address,
+    bool new_wallet(const boost::program_options::variables_map& vm, const cryptonote::account_public_address& address,
         const boost::optional<crypto::secret_key>& spendkey, const crypto::secret_key& viewkey);
-    boost::optional<epee::wipeable_string> new_wallet(const boost::program_options::variables_map& vm,
+    bool new_wallet(const boost::program_options::variables_map& vm,
         const std::string &multisig_keys, const std::string &old_language);
-    boost::optional<epee::wipeable_string> new_wallet(const boost::program_options::variables_map& vm, const std::string& device_name);
+    bool new_wallet(const boost::program_options::variables_map& vm, const std::string& device_name);
     bool open_wallet(const boost::program_options::variables_map& vm);
     bool close_wallet();
 
@@ -137,7 +137,6 @@ namespace cryptonote
     bool set_key_reuse_mitigation2(const std::vector<std::string> &args = std::vector<std::string>());
     bool set_subaddress_lookahead(const std::vector<std::string> &args = std::vector<std::string>());
     bool set_segregation_height(const std::vector<std::string> &args = std::vector<std::string>());
-    bool set_ignore_fractional_outputs(const std::vector<std::string> &args = std::vector<std::string>());
     bool help(const std::vector<std::string> &args = std::vector<std::string>());
     bool start_mining(const std::vector<std::string> &args);
     bool stop_mining(const std::vector<std::string> &args);
@@ -153,8 +152,7 @@ namespace cryptonote
     bool transfer(const std::vector<std::string> &args);
     bool transfer_new(const std::vector<std::string> &args);
     bool locked_transfer(const std::vector<std::string> &args);
-    bool locked_sweep_all(const std::vector<std::string> &args);
-    bool sweep_main(uint64_t below, bool locked, const std::vector<std::string> &args);
+    bool sweep_main(uint64_t below, const std::vector<std::string> &args);
     bool sweep_all(const std::vector<std::string> &args);
     bool sweep_below(const std::vector<std::string> &args);
     bool sweep_single(const std::vector<std::string> &args);
@@ -177,7 +175,6 @@ namespace cryptonote
     bool rescan_spent(const std::vector<std::string> &args);
     bool set_log(const std::vector<std::string> &args);
     bool get_tx_key(const std::vector<std::string> &args);
-    bool set_tx_key(const std::vector<std::string> &args);
     bool check_tx_key(const std::vector<std::string> &args);
     bool get_tx_proof(const std::vector<std::string> &args);
     bool check_tx_proof(const std::vector<std::string> &args);
