@@ -3,7 +3,7 @@ Cred daemon internationalization
 
 The Cred command line tools can be translated in various languages. If you wish to contribute and need help/support, contact the [Cred Localization Workgroup on Taiga](https://taiga.getcred.org/project/erciccione-cred-localization/) or come chat on `#cred-translations` (Freenode/IRC, riot/matrix, MatterMost)
 
-In order to use the same translation workflow as the [Cred Core GUI](https://github.com/cred-project/cred-core), they use Qt Linguist translation files.  However, to avoid the dependencies on Qt this normally implies, they use a custom loader to read those files at runtime.
+In order to use the same translation workflow as the [Cred Core GUI](https://github.com/VangYangPao/cred-core), they use Qt Linguist translation files.  However, to avoid the dependencies on Qt this normally implies, they use a custom loader to read those files at runtime.
 
 ### Tools for translators
 

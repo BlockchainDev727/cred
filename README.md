@@ -8,12 +8,12 @@ Portions Copyright (c) 2012-2013 The Cryptonote developers.
 - Web: [getcred.org](https://getcred.org)
 - Forum: [forum.getcred.org](https://forum.getcred.org)
 - Mail: [dev@getcred.org](mailto:dev@getcred.org)
-- GitHub: [https://github.com/cred-project/cred](https://github.com/cred-project/cred)
+- GitHub: [https://github.com/VangYangPao/cred](https://github.com/VangYangPao/cred)
 - IRC: [#cred-dev on Freenode](http://webchat.freenode.net/?randomnick=1&channels=%23cred-dev&prompt=1&uio=d4)
 
 ## Vulnerability response
 
-- Our [Vulnerability Response Process](https://github.com/cred-project/meta/blob/master/VULNERABILITY_RESPONSE_PROCESS.md) encourages responsible disclosure
+- Our [Vulnerability Response Process](https://github.com/VangYangPao/meta/blob/master/VULNERABILITY_RESPONSE_PROCESS.md) encourages responsible disclosure
 - We are also available via [HackerOne](https://hackerone.com/cred)
 
 
@@ -155,7 +155,7 @@ build the library binary manually. This can be done with the following command `
 
 Clone recursively to pull-in needed submodule(s):
 
-`$ git clone --recursive https://github.com/cred-project/cred`
+`$ git clone --recursive https://github.com/VangYangPao/cred`
 
 If you already have a repo cloned, initialize and update:
 
@@ -225,7 +225,7 @@ Tested on a Raspberry Pi Zero with a clean install of minimal Raspbian Stretch (
 ```
 * Clone cred and checkout most recent release version:
 ```
-        git clone https://github.com/cred-project/cred.git
+        git clone https://github.com/VangYangPao/cred.git
 	cd cred
 	git checkout tags/v0.11.1.0
 ```
