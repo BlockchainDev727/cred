@@ -31,8 +31,8 @@
 #include "http_base.h"
 #include "reg_exp_definer.h"
 
-#undef CRED_DEFAULT_LOG_CATEGORY
-#define CRED_DEFAULT_LOG_CATEGORY "net"
+#undef MONERO_DEFAULT_LOG_CATEGORY
+#define MONERO_DEFAULT_LOG_CATEGORY "net"
 
 namespace epee
 {

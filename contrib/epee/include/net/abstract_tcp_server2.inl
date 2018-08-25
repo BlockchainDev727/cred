@@ -1,7 +1,7 @@
 /**
 @file
 @author from CrypoNote (see copyright below; Andrey N. Sabelnikov)
-@cred rfree
+@monero rfree
 @brief the connection templated-class for one peer connection
 */
 // Copyright (c) 2006-2013, Andrey N. Sabelnikov, www.sabelnikov.net
@@ -53,8 +53,8 @@
 
 #include "../../../../src/cryptonote_core/cryptonote_core.h" // e.g. for the send_stop_signal()
 
-#undef CRED_DEFAULT_LOG_CATEGORY
-#define CRED_DEFAULT_LOG_CATEGORY "net"
+#undef MONERO_DEFAULT_LOG_CATEGORY
+#define MONERO_DEFAULT_LOG_CATEGORY "net"
 
 #define DEFAULT_TIMEOUT_MS_LOCAL 1800000 // 30 minutes
 #define DEFAULT_TIMEOUT_MS_REMOTE 300000 // 5 minutes
@@ -461,7 +461,7 @@ PRAGMA_WARNING_DISABLE_VS(4355)
 					if (!all_ok) {
 						MDEBUG("do_send() DONE ***FAILED*** from packet="<<cb<<" B for ptr="<<ptr);
 						MDEBUG("do_send() SEND was aborted in middle of big package - this is mostly harmless "
-							<< " (e.g. peer closed connection) but if it causes trouble tell us at #cred-dev. " << cb);
+							<< " (e.g. peer closed connection) but if it causes trouble tell us at #monero-dev. " << cb);
 						return false; // partial failure in sending
 					}
 					pos = pos+len;
@@ -649,6 +649,10 @@ PRAGMA_WARNING_DISABLE_VS(4355)
   template<class t_protocol_handler>
   bool connection<t_protocol_handler>::shutdown()
   {
+    CRITICAL_REGION_BEGIN(m_shutdown_lock);
+    if (m_was_shutdown)
+      return true;
+    m_was_shutdown = true;
     // Initiate graceful connection closure.
     m_timer.cancel();
     boost::system::error_code ignored_ec;
@@ -658,7 +662,7 @@ PRAGMA_WARNING_DISABLE_VS(4355)
       try { host_count(m_host, -1); } catch (...) { /* ignore */ }
       m_host = "";
     }
-    m_was_shutdown = true;
+    CRITICAL_REGION_END();
     m_protocol_handler.release_protocol();
     return true;
   }
@@ -667,6 +671,9 @@ PRAGMA_WARNING_DISABLE_VS(4355)
   bool connection<t_protocol_handler>::close()
   {
     TRY_ENTRY();
+    auto self = safe_shared_from_this();
+    if(!self)
+      return false;
     //_info("[sock " << socket_.native_handle() << "] Que Shutdown called.");
     m_timer.cancel();
     size_t send_que_size = 0;

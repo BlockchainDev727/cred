@@ -35,8 +35,8 @@
 
 #include "string_tools.h"
 
-#undef CRED_DEFAULT_LOG_CATEGORY
-#define CRED_DEFAULT_LOG_CATEGORY "net.http"
+#undef MONERO_DEFAULT_LOG_CATEGORY
+#define MONERO_DEFAULT_LOG_CATEGORY "net.http"
 
 namespace epee
 {

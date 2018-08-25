@@ -1,7 +1,7 @@
 /**
 @file
 @author from CrypoNote (see copyright below; Andrey N. Sabelnikov)
-@cred rfree
+@monero rfree
 @brief the connection templated-class for one peer connection
 */
 // Copyright (c) 2006-2013, Andrey N. Sabelnikov, www.sabelnikov.net
@@ -57,8 +57,8 @@
 #include "connection_basic.hpp"
 #include "network_throttle-detail.hpp"
 
-#undef CRED_DEFAULT_LOG_CATEGORY
-#define CRED_DEFAULT_LOG_CATEGORY "net"
+#undef MONERO_DEFAULT_LOG_CATEGORY
+#define MONERO_DEFAULT_LOG_CATEGORY "net"
 
 #define ABSTRACT_SERVER_SEND_QUE_MAX_COUNT 1000
 
@@ -158,6 +158,7 @@ namespace net_utils
     std::list<boost::shared_ptr<connection<t_protocol_handler> > > m_self_refs; // add_ref/release support
     critical_section m_self_refs_lock;
     critical_section m_chunking_lock; // held while we add small chunks of the big do_send() to small do_send_chunk()
+    critical_section m_shutdown_lock; // held while shutting down
     
     t_connection_type m_connection_type;
     
